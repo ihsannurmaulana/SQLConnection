@@ -10,7 +10,7 @@ namespace Connection
         public int max_salary { get; set; }
 
         // GetAllLocation : Location
-        public static List<Jobs> GetAllJob()
+        public List<Jobs> GetAllJob()
         {
 
             SqlConnection conn = MyConnection.Get();
@@ -57,7 +57,7 @@ namespace Connection
             Menu menu = new Menu();
             // GetAll Jobs : Job
             Console.WriteLine("     All Data Jobs\n     ");
-            List<Jobs> jobs = Jobs.GetAllJob();
+            List<Jobs> jobs = GetAllJob();
             foreach (Jobs job in jobs)
             {
                 Console.WriteLine("");

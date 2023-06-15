@@ -26,7 +26,8 @@ namespace Connection
             Console.WriteLine("5. Departments");
             Console.WriteLine("6. Employees");
             Console.WriteLine("7. Histories");
-            Console.WriteLine("8. Exit");
+            Console.WriteLine("8. LINQ");
+            Console.WriteLine("9. Exit");
             try
             {
                 Console.Write("Select Tabel : ");
@@ -56,6 +57,9 @@ namespace Connection
                         his.HistoryMenu();
                         break;
                     case 8:
+                        new LINQ().Menu();
+                        break;
+                    case 9:
                         System.Environment.Exit(0);
                         break;
                     default:

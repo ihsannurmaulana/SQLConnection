@@ -7,10 +7,10 @@ namespace Connection
         public int id { get; set; }
         public string name { get; set; }
         public int location_id { get; set; }
-        public int manager_id { get; set; }
+        public int? manager_id { get; set; }
 
         // GetAllLocation : Location
-        public static List<Department> GetAllDepartment()
+        public List<Department> GetAllDepartment()
         {
 
             SqlConnection conn = MyConnection.Get();
@@ -32,7 +32,7 @@ namespace Connection
                         dep.id = reader.GetInt32(0);
                         dep.name = reader.GetString(1);
                         dep.location_id = reader.GetInt32(2);
-                        dep.manager_id = reader.GetInt32(3);
+                        dep.manager_id = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
 
                         department.Add(dep);// Menambahkan objek Department ke dalam list
                     }
@@ -59,7 +59,7 @@ namespace Connection
             // GetAllDepartment : Department
             Console.Clear();
             Console.WriteLine("     All Data Department     ");
-            List<Department> departments = Department.GetAllDepartment();
+            List<Department> departments = GetAllDepartment();
             foreach (Department department in departments)
             {
 

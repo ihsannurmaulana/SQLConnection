@@ -17,7 +17,7 @@ namespace Connection
         public int department_id { get; set; }
 
         // GetAllLocation : Location
-        public static List<Employee> GetAllEmployee()
+        public List<Employee> GetAllEmployee()
         {
 
             SqlConnection conn = MyConnection.Get();
@@ -44,7 +44,7 @@ namespace Connection
                         emp.hire_date = reader.GetDateTime(5);
                         emp.salary = reader.GetInt32(6);
                         emp.comission = reader.GetDecimal(7);
-                        emp.manager_id = reader.GetInt32(8);
+                        emp.manager_id = reader.IsDBNull(8) ? 0 : reader.GetInt32(8);
                         emp.job_id = reader.GetString(9);
                         emp.department_id = reader.GetInt32(10);
 
@@ -72,7 +72,7 @@ namespace Connection
             // GetAllEmployee : Employee
             Console.WriteLine("      All Data Employee     ");
             Console.WriteLine("----------------------------");
-            List<Employee> employees = Employee.GetAllEmployee();
+            List<Employee> employees = GetAllEmployee();
             foreach (Employee employee in employees)
             {
 
