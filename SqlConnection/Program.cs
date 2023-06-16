@@ -1,4 +1,15 @@
 ﻿
 // Untuk memanggil menu 
-using Connection;
-new Menu().MainMenu();
+
+using Connection.Controllers;
+
+namespace Connection
+{
+    class Program
+    {
+        static void Main()
+        {
+            new MenuController().MainMenu();
+        }
+    }
+}
